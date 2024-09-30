@@ -174,12 +174,6 @@ export default {
 
     const { pointers } = this;
 
-    
-     if (action !== ACTION_NONE) {
-          event.preventDefault();
-        } else {
-          return;
-        }
 
     if (dispatchEvent(this.element, EVENT_CROP_MOVE, {
       originalEvent: event,
@@ -187,6 +181,13 @@ export default {
     }) === false) {
       return;
     }
+
+        
+     if (action !== ACTION_NONE) {
+          event.preventDefault();
+        } else {
+          return;
+        }
 
     if (event.changedTouches) {
       forEach(event.changedTouches, (touch) => {
