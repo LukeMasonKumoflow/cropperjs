@@ -151,7 +151,10 @@ export default {
     }
 
     // This line is required for preventing page zooming in iOS browsers
+    if (action !== ACTION_NONE) {
     event.preventDefault();
+    }
+    
 
     this.action = action;
     this.cropping = false;
@@ -171,7 +174,12 @@ export default {
 
     const { pointers } = this;
 
-    event.preventDefault();
+    
+     if (action !== ACTION_NONE) {
+          event.preventDefault();
+        } else {
+          return;
+        }
 
     if (dispatchEvent(this.element, EVENT_CROP_MOVE, {
       originalEvent: event,
